@@ -55,12 +55,8 @@ class Sitemap implements Responsable
 
     public function render(): string
     {
-        sort($this->tags);
-
-        $tags = collect($this->tags)->unique('url');
-
         return view('laravel-sitemap::sitemap')
-            ->with(compact('tags'))
+            ->with(['tags' => $this->tags])
             ->render();
     }
 
